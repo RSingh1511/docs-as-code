@@ -8,5 +8,5 @@ with some hopefully useful meta information.
 
 .. needtable::
    :types: tool_req
-   :columns: satisfies as "Process Requirement" ;id as "Tool Requirement";implemented;source_code_link
+   :columns: derived_from as "Process Requirement" ;id as "Tool Requirement";implemented;source_code_link
    :style: table

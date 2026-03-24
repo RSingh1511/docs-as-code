@@ -36,7 +36,7 @@
 .. feat_req:: Child requirement 1
    :id: feat_req__child__1
    :safety: QM
-   :satisfies: feat_req__parent__QM
+   :derived_from: feat_req__parent__QM
    :status: valid
 
 
@@ -46,18 +46,18 @@
 .. feat_req:: Child requirement 2
    :id: feat_req__child__2
    :safety: ASIL_B
-   :satisfies: feat_req__parent__ASIL_B
+   :derived_from: feat_req__parent__ASIL_B
    :status: valid
 
 
 
 .. Negative Test: Child requirement QM. Parent requirement is `ASIL_B`. Child cant fulfill the safety level of the parent.
-#EXPECT: QM requirements cannot satisfy ASIL requirements.
+#EXPECT: QM requirements cannot be derived from ASIL requirements.
 
 .. comp_req:: Child requirement 3
    :id: feat_req__qm_child_with_asil_parent
    :safety: QM
-   :satisfies: feat_req__parent__ASIL_B
+   :derived_from: feat_req__parent__ASIL_B
    :status: valid
 
 
@@ -69,7 +69,7 @@
    :id: feat_req__linking_to_unknown_parent
    :safety: ASIL_B
    :status: valid
-   :satisfies: feat_req__parent0__abcd
+   :derived_from: feat_req__parent0__abcd
 
 
 

@@ -32,12 +32,12 @@
 
 
 
-.. Required link `satisfies` refers to wrong requirement type
-#EXPECT: feat_req__abce: references 'std_wp__test__abce' as 'satisfies', but it must reference Stakeholder Requirement (stkh_req).
+.. Optional link `derived_from` with wrong target type: non-fatal warning only (not a fatal Sphinx warning)
+#EXPECT-NOT: feat_req__abce: references 'std_wp__test__abce' as 'derived_from', but it must reference Stakeholder Requirement (stkh_req).
 
 .. feat_req:: Child requirement
    :id: feat_req__abce
-   :satisfies: std_wp__test__abce
+   :derived_from: std_wp__test__abce
 
 
 
@@ -46,7 +46,7 @@
 
 .. feat_req:: Child requirement
    :id: feat_req__abcg
-   :satisfies: stkh_req__abcd
+   :derived_from: stkh_req__abcd
 
 .. stkh_req:: Parent requirement
    :id: stkh_req__abcd
