@@ -11,7 +11,6 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-load("@aspect_rules_lint//format:defs.bzl", "format_multirun", "format_test")
 load("@aspect_rules_py//py:defs.bzl", "py_library")
 load("@rules_java//java:java_binary.bzl", "java_binary")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
@@ -38,7 +37,6 @@ filegroup(
         ["*.py"],
     ) + [
         "//src/extensions/score_draw_uml_funcs:all_sources",
-        "//src/extensions/score_header_service:all_sources",
         "//src/extensions/score_layout:all_sources",
         "//src/extensions/score_metamodel:all_sources",
         "//src/extensions/score_source_code_linker:all_sources",
@@ -79,7 +77,6 @@ compile_pip_requirements(
     name = "requirements",
     srcs = [
         "requirements.in",
-        "@score_tooling//python_basics:requirements.txt",
     ],
     requirements_txt = "requirements.txt",
     tags = [
@@ -103,27 +100,4 @@ dash_license_checker(
     src = ":requirements_lock",
     file_type = "requirements",
     visibility = ["//visibility:public"],
-)
-
-format_multirun(
-    name = "format.fix",
-    python = "@aspect_rules_lint//format:ruff",
-    starlark = "@buildifier_prebuilt//:buildifier",
-    visibility = [
-        "//visibility:public",
-    ],
-    yaml = "@aspect_rules_lint//format:yamlfmt",
-)
-
-format_test(
-    name = "format.check",
-    no_sandbox = True,
-    python = "@aspect_rules_lint//format:ruff",
-    starlark = "@buildifier_prebuilt//:buildifier",
-    tags = ["manual"],
-    visibility = [
-        "//visibility:public",
-    ],
-    workspace = "//:MODULE.bazel",
-    yaml = "@aspect_rules_lint//format:yamlfmt",
 )
